@@ -91,10 +91,19 @@ class ThirdCard extends StatelessWidget {
                       padding: const EdgeInsets.all(10),
                       child: Column(
                         children: [
-                          Image(
-                              height: 150,
-                              width: 243,
-                              image: NetworkImage(data.imagelink)),
+                          GestureDetector(
+                            onTap: () {
+                              showDialogFunc(
+                                  context, data.imagelink, data.subtitle);
+                            },
+                            child: Hero(
+                              tag: data.imagelink,
+                              child: Image(
+                                  height: 150,
+                                  width: 243,
+                                  image: NetworkImage(data.imagelink)),
+                            ),
+                          ),
                           const SizedBox(
                             height: 10,
                           ),
@@ -135,3 +144,172 @@ class ThirdCard extends StatelessWidget {
     );
   }
 }
+
+showDialogFunc(context, String img, String text) {
+  return showDialog(
+    context: context,
+    builder: (context) {
+      return Center(
+        child: Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              // padding: const EdgeInsets.all(15),
+              child: Container(
+                // decoration: BoxDecoration(
+                //     color: Colors.blue.shade50,
+                //     borderRadius: BorderRadius.circular(10),
+                //     image: DecorationImage(
+                //       colorFilter: ColorFilter.mode(
+                //           Colors.blue.withOpacity(0.3), BlendMode.dstATop),
+                //       image: const NetworkImage(
+                //           "https://i.pinimg.com/736x/8c/98/99/8c98994518b575bfd8c949e91d20548b.jpg"),
+                //       fit: BoxFit.fill,
+                //     )),
+                // padding: const EdgeInsets.all(15),
+                height: MediaQuery.of(context).size.height * 0.4,
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(5),
+                      child: Center(
+                          child: Column(
+                        children: [
+                          Hero(
+                            tag: img,
+                            child: Image(
+                              image: NetworkImage(img),
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                color: Colors.blue.shade50,
+                                borderRadius: const BorderRadius.only(
+                                    bottomLeft: Radius.circular(25),
+                                    bottomRight: Radius.circular(25)),
+                                image: DecorationImage(
+                                  colorFilter: ColorFilter.mode(
+                                      Colors.blue.withOpacity(0.3),
+                                      BlendMode.dstATop),
+                                  image: const NetworkImage(
+                                      "https://i.pinimg.com/736x/8c/98/99/8c98994518b575bfd8c949e91d20548b.jpg"),
+                                  fit: BoxFit.fill,
+                                )),
+                            padding: const EdgeInsets.all(5),
+                            child: Text(
+                              text,
+                              textAlign: TextAlign.center,
+                            ),
+                          )
+                        ],
+                      )),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            // Positioned(
+            //   left: 312,
+            //   bottom: 265,
+            //   child: IconButton(
+            //       onPressed: () {
+            //         Navigator.pop(context);
+            //       },
+            //       icon: const CircleAvatar(
+            //         radius: 12,
+            //         backgroundColor: Colors.white,
+            //         child: Icon(
+            //           Icons.cancel_outlined,
+            //           color: Colors.black,
+            //         ),
+            //       )),
+            // )
+          ],
+        ),
+      );
+    },
+  );
+}
+
+
+// showDialogFunc(context, String img, String text) {
+//   return showDialog(
+//     context: context,
+//     builder: (context) {
+//       return Center(
+//         child: Material(
+//           type: MaterialType.transparency,
+//           child: Stack(
+//             children: [
+//               Container(
+//                 decoration: BoxDecoration(
+//                   borderRadius: BorderRadius.circular(10),
+//                 ),
+//                 padding: const EdgeInsets.all(15),
+//                 child: Container(
+//                   decoration: BoxDecoration(
+//                       color: Colors.blue.shade50,
+//                       borderRadius: BorderRadius.circular(10),
+//                       image: DecorationImage(
+//                         colorFilter: ColorFilter.mode(
+//                             Colors.blue.withOpacity(0.3), BlendMode.dstATop),
+//                         image: const NetworkImage(
+//                             "https://i.pinimg.com/736x/8c/98/99/8c98994518b575bfd8c949e91d20548b.jpg"),
+//                         fit: BoxFit.fill,
+//                       )),
+//                   padding: const EdgeInsets.all(15),
+//                   height: MediaQuery.of(context).size.height * 0.3,
+//                   width: MediaQuery.of(context).size.width * 0.7,
+//                   child: Column(
+//                     crossAxisAlignment: CrossAxisAlignment.center,
+//                     children: <Widget>[
+//                       ClipRRect(
+//                         borderRadius: BorderRadius.circular(5),
+//                         child: Center(
+//                             child: Column(
+//                           children: [
+//                             Image(
+//                                 image: NetworkImage(img),
+//                                 fit: BoxFit.cover,
+//                                 width: 1000.0),
+//                             const SizedBox(
+//                               height: 10,
+//                             ),
+//                             Text(
+//                               text,
+//                               textAlign: TextAlign.center,
+//                             )
+//                           ],
+//                         )),
+//                       ),
+//                     ],
+//                   ),
+//                 ),
+//               ),
+//               Positioned(
+//                 left: 242,
+//                 bottom: 230,
+//                 child: IconButton(
+//                     onPressed: () {
+//                       Navigator.pop(context);
+//                     },
+//                     icon: const CircleAvatar(
+//                       radius: 12,
+//                       backgroundColor: Colors.white,
+//                       child: Icon(
+//                         Icons.cancel_outlined,
+//                         color: Colors.black,
+//                       ),
+//                     )),
+//               )
+//             ],
+//           ),
+//         ),
+//       );
+//     },
+//   );
+// }

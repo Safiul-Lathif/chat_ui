@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:chat_ui/models/news_feed_model.dart';
 import 'package:chat_ui/miscellaneous.dart';
 import 'package:chat_ui/widgets/school_admin.dart';
@@ -6,10 +7,22 @@ import 'package:chat_ui/widgets/visiblity_widget.dart';
 import 'package:flutter/material.dart';
 
 class ImportantMessageCard extends StatelessWidget {
-  const ImportantMessageCard(
+  ImportantMessageCard(
       {super.key, required this.data, required this.itemIndex});
   final NewsFeedList data;
   final int itemIndex;
+  List<String> images = [
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZyyoQ9c9C0WZhiNYTAxmZgOoPVzFSKCNoOw&usqp=CAU",
+    "https://thumbs.dreamstime.com/b/generic-high-school-building-20262841.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZyyoQ9c9C0WZhiNYTAxmZgOoPVzFSKCNoOw&usqp=CAU",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Hibbing_High_School_2014.jpg/1200px-Hibbing_High_School_2014.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/1/10/Mak%C3%B3_boarding_school_02.JPG",
+    "https://content.jdmagicbox.com/comp/chennai/u9/044pxx44.xx44.180124145626.a9u9/catalogue/mount-litera-zee-school-omr-chennai-navalur-chennai-senior-secondary-schools-xknyuqwdwk.jpg?clr=",
+    "https://thumbs.dreamstime.com/b/generic-high-school-building-facade-red-brick-american-bright-summer-day-77419843.jpg",
+    "https://www.stcolumbas.edu.in/slider/Slider_01.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF7Wg4MtQyPLelWBnMc-aTChpN0AmuH6PuqQ&usqp=CAU"
+  ];
+
   @override
   Widget build(BuildContext context) {
     double baseWidth = 414;
@@ -41,27 +54,36 @@ class ImportantMessageCard extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.3,
-                              height: MediaQuery.of(context).size.height * 0.20,
-                              decoration: BoxDecoration(
-                                  borderRadius: const BorderRadius.only(
-                                    topRight: Radius.circular(20),
-                                    bottomLeft: Radius.circular(5),
-                                    bottomRight: Radius.circular(5),
-                                    topLeft: Radius.circular(5),
-                                  ),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: const Color(0x3f000000),
-                                      offset: Offset(-3 * fem, 3 * fem),
-                                      blurRadius: 3 * fem,
+                            GestureDetector(
+                              onTap: () {
+                                showDialogFunc(
+                                  context,
+                                  images,
+                                );
+                              },
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * 0.3,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.20,
+                                decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.only(
+                                      topRight: Radius.circular(20),
+                                      bottomLeft: Radius.circular(5),
+                                      bottomRight: Radius.circular(5),
+                                      topLeft: Radius.circular(5),
                                     ),
-                                  ],
-                                  image: const DecorationImage(
-                                      fit: BoxFit.fitHeight,
-                                      image: NetworkImage(
-                                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZyyoQ9c9C0WZhiNYTAxmZgOoPVzFSKCNoOw&usqp=CAU"))),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: const Color(0x3f000000),
+                                        offset: Offset(-3 * fem, 3 * fem),
+                                        blurRadius: 3 * fem,
+                                      ),
+                                    ],
+                                    image: const DecorationImage(
+                                        fit: BoxFit.fitHeight,
+                                        image: NetworkImage(
+                                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZyyoQ9c9C0WZhiNYTAxmZgOoPVzFSKCNoOw&usqp=CAU"))),
+                              ),
                             ),
                             const SizedBox(
                               width: 10,
@@ -79,10 +101,9 @@ class ImportantMessageCard extends StatelessWidget {
                                 ),
                                 itemBuilder: (context, index) {
                                   return Container(
-                                    decoration: const BoxDecoration(
+                                    decoration: BoxDecoration(
                                         image: DecorationImage(
-                                            image: NetworkImage(
-                                                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZyyoQ9c9C0WZhiNYTAxmZgOoPVzFSKCNoOw&usqp=CAU"),
+                                            image: NetworkImage(images[index]),
                                             fit: BoxFit.fill),
                                         borderRadius: BorderRadius.only(
                                           topRight: Radius.circular(5),
@@ -491,4 +512,92 @@ class ImportantMessageCard extends StatelessWidget {
       ],
     );
   }
+}
+
+showDialogFunc(
+  context,
+  List img,
+) {
+  return showDialog(
+    context: context,
+    builder: (context) {
+      return Center(
+        child: Material(
+          type: MaterialType.transparency,
+          child: Stack(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                // padding: const EdgeInsets.all(15),
+                child: Container(
+                  // decoration: BoxDecoration(
+                  //     color: Colors.blue.shade50,
+                  //     borderRadius: BorderRadius.circular(10),
+                  //     image: DecorationImage(
+                  //       colorFilter: ColorFilter.mode(
+                  //           Colors.blue.withOpacity(0.3), BlendMode.dstATop),
+                  //       image: const NetworkImage(
+                  //           "https://i.pinimg.com/736x/8c/98/99/8c98994518b575bfd8c949e91d20548b.jpg"),
+                  //       fit: BoxFit.fill,
+                  //     )),
+                  height: MediaQuery.of(context).size.height * 0.4,
+                  width: MediaQuery.of(context).size.width,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(5),
+                        child: Center(
+                            child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            CarouselSlider.builder(
+                              itemCount: img.length,
+                              itemBuilder: (BuildContext context, int itemIndex,
+                                      int pageViewIndex) =>
+                                  Image(
+                                image: NetworkImage(img[itemIndex]),
+                                fit: BoxFit.fill,
+                                width: MediaQuery.of(context).size.width,
+                              ),
+                              options: CarouselOptions(
+                                autoPlay: true,
+                                enlargeCenterPage: true,
+                                pauseAutoPlayOnTouch: true,
+                              ),
+                            )
+                          ],
+                        )),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              // Positioned(
+              //   left: 262,
+              //   bottom: 190,
+              //   child: IconButton(
+              //       onPressed: () {
+              //         Navigator.pop(context);
+              //       },
+              //       icon: const CircleAvatar(
+              //         radius: 12,
+              //         backgroundColor: Colors.white,
+              //         child: Icon(
+              //           Icons.cancel_outlined,
+              //           color: Colors.black,
+              //         ),
+              //       )),
+              // )
+            ],
+          ),
+        ),
+      );
+    },
+  );
 }

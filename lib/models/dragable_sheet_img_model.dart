@@ -1,3 +1,4 @@
+import 'package:chat_ui/screens/scan_screen.dart';
 import 'package:flutter/material.dart';
 
 Route createRoute(Widget screen) {
@@ -73,6 +74,12 @@ List<ListModel> lists = [
       width: 30,
     ),
     text: 'Time Table',
-    onTap: (context) {},
+    onTap: (context) {
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => ScanScreen()),
+        (Route<dynamic> route) => true,
+      );
+    },
   ),
 ];

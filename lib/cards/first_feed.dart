@@ -153,7 +153,7 @@ class FeedPage extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              "View full info",
+                              "Download Document",
                               style: SafeGoogleFont(
                                 'Inter',
                                 fontSize: 16 * ffem,
@@ -164,7 +164,7 @@ class FeedPage extends StatelessWidget {
                               ),
                             ),
                             const Icon(
-                              Icons.info_outline,
+                              Icons.download,
                               size: 20,
                               color: Colors.green,
                             )
@@ -198,7 +198,7 @@ class FeedPage extends StatelessWidget {
                               width: 3,
                             ),
                             Text(
-                              "Watched: 20",
+                              "Downloaded: 20",
                               style: TextStyle(fontSize: 11),
                             )
                           ],

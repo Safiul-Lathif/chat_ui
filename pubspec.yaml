@@ -41,6 +41,7 @@ dependencies:
   flutter_spinkit: ^5.1.0
   draggable_bottom_sheet: ^1.0.2
   swipe_to: ^1.0.2
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:
@@ -109,6 +110,8 @@ flutter:
     - assets/rectangle-7-X7G.png
     - assets/rectangle-7-mUe.png
     - assets/rectangle-7-fop.png  
+    - assets/bg_image.png
+    - assets/qr.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
