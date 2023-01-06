@@ -280,7 +280,7 @@ class _ParentsReplyCardState extends State<ParentsReplyCard> {
                     ),
                   ],
                 ),
-                VisiblityWidget(visible: widget.data.visibility),
+                VisiblityWidget(visible: 'onlhy to you '),
               ],
             ),
           ],

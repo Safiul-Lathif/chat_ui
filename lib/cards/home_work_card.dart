@@ -511,27 +511,36 @@ class HomeWorkPage extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.3,
-                              height: MediaQuery.of(context).size.height * 0.25,
-                              decoration: BoxDecoration(
-                                  borderRadius: const BorderRadius.only(
-                                    topRight: Radius.circular(20),
-                                    bottomLeft: Radius.circular(5),
-                                    bottomRight: Radius.circular(5),
-                                    topLeft: Radius.circular(5),
-                                  ),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: const Color(0x3f000000),
-                                      offset: Offset(-3 * fem, 3 * fem),
-                                      blurRadius: 3 * fem,
+                            GestureDetector(
+                              onTap: () {
+                                showDialogFunc(
+                                    context,
+                                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZyyoQ9c9C0WZhiNYTAxmZgOoPVzFSKCNoOw&usqp=CAU",
+                                    "Then took place in X-A where the students participated an inter school completion and won 2dn place in the event. it was a very proud moment for the school and we wish to this information");
+                              },
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * 0.3,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.25,
+                                decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.only(
+                                      topRight: Radius.circular(20),
+                                      bottomLeft: Radius.circular(5),
+                                      bottomRight: Radius.circular(5),
+                                      topLeft: Radius.circular(5),
                                     ),
-                                  ],
-                                  image: const DecorationImage(
-                                      fit: BoxFit.fitHeight,
-                                      image: NetworkImage(
-                                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZyyoQ9c9C0WZhiNYTAxmZgOoPVzFSKCNoOw&usqp=CAU"))),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: const Color(0x3f000000),
+                                        offset: Offset(-3 * fem, 3 * fem),
+                                        blurRadius: 3 * fem,
+                                      ),
+                                    ],
+                                    image: const DecorationImage(
+                                        fit: BoxFit.fitHeight,
+                                        image: NetworkImage(
+                                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZyyoQ9c9C0WZhiNYTAxmZgOoPVzFSKCNoOw&usqp=CAU"))),
+                              ),
                             ),
                             const SizedBox(
                               width: 10,
@@ -563,4 +572,97 @@ class HomeWorkPage extends StatelessWidget {
       ],
     );
   }
+}
+
+showDialogFunc(context, String img, String text) {
+  return showDialog(
+    context: context,
+    builder: (context) {
+      return Center(
+        child: Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              // padding: const EdgeInsets.all(15),
+              child: Container(
+                // decoration: BoxDecoration(
+                //     color: Colors.blue.shade50,
+                //     borderRadius: BorderRadius.circular(10),
+                //     image: DecorationImage(
+                //       colorFilter: ColorFilter.mode(
+                //           Colors.blue.withOpacity(0.3), BlendMode.dstATop),
+                //       image: const NetworkImage(
+                //           "https://i.pinimg.com/736x/8c/98/99/8c98994518b575bfd8c949e91d20548b.jpg"),
+                //       fit: BoxFit.fill,
+                //     )),
+                // padding: const EdgeInsets.all(15),
+                height: MediaQuery.of(context).size.height * 0.7,
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(5),
+                      child: Center(
+                          child: Column(
+                        children: [
+                          Hero(
+                            tag: img,
+                            child: Image(
+                              image: NetworkImage(img),
+                              width: 350,
+                              height: 450,
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                color: Colors.blue.shade50,
+                                borderRadius: const BorderRadius.only(
+                                    bottomLeft: Radius.circular(25),
+                                    bottomRight: Radius.circular(25)),
+                                image: DecorationImage(
+                                  colorFilter: ColorFilter.mode(
+                                      Colors.blue.withOpacity(0.3),
+                                      BlendMode.dstATop),
+                                  image: const NetworkImage(
+                                      "https://i.pinimg.com/736x/8c/98/99/8c98994518b575bfd8c949e91d20548b.jpg"),
+                                  fit: BoxFit.fill,
+                                )),
+                            padding: const EdgeInsets.all(5),
+                            child: Text(
+                              text,
+                              textAlign: TextAlign.center,
+                            ),
+                          )
+                        ],
+                      )),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            // Positioned(
+            //   left: 312,
+            //   bottom: 265,
+            //   child: IconButton(
+            //       onPressed: () {
+            //         Navigator.pop(context);
+            //       },
+            //       icon: const CircleAvatar(
+            //         radius: 12,
+            //         backgroundColor: Colors.white,
+            //         child: Icon(
+            //           Icons.cancel_outlined,
+            //           color: Colors.black,
+            //         ),
+            //       )),
+            // )
+          ],
+        ),
+      );
+    },
+  );
 }
