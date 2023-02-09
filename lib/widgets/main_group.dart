@@ -1,3 +1,4 @@
+import 'package:chat_ui/forms/add_grp_form.dart';
 import 'package:flutter/material.dart';
 
 class MainGroup extends StatelessWidget {
@@ -270,50 +271,23 @@ class MainGroup extends StatelessWidget {
                   ),
                 ],
               ),
-              Stack(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Container(
-                        width: 340,
-                        padding: const EdgeInsets.only(
-                            top: 20, left: 10, right: 10, bottom: 10),
-                        decoration: BoxDecoration(
-                            color: Colors.red.shade50,
-                            border: Border.all(
-                              color: Colors.red,
-                            ),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Colors.grey,
-                                offset: Offset(1.0, 1.0), //(x,y)
-                                blurRadius: 6.0,
-                              ),
-                            ],
-                            borderRadius: const BorderRadius.only(
-                                topLeft: Radius.circular(5),
-                                topRight: Radius.circular(15),
-                                bottomLeft: Radius.circular(15),
-                                bottomRight: Radius.circular(15))),
-                        child: const Text(
-                          " Create your own customaized group",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.brown,
-                          ),
-                        )),
-                  ),
-                  Center(
-                    child: Positioned(
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AddGroup()),
+                  );
+                },
+                child: Stack(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
                       child: Container(
-                          width: 250,
+                          width: 340,
                           padding: const EdgeInsets.only(
-                              left: 80, right: 25, top: 10, bottom: 10),
+                              top: 20, left: 10, right: 10, bottom: 10),
                           decoration: BoxDecoration(
-                              gradient: LinearGradient(colors: [
-                                Colors.red.shade400,
-                                Colors.red.shade100
-                              ]),
+                              color: Colors.red.shade50,
                               border: Border.all(
                                 color: Colors.red,
                               ),
@@ -324,17 +298,52 @@ class MainGroup extends StatelessWidget {
                                   blurRadius: 6.0,
                                 ),
                               ],
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(20))),
+                              borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(5),
+                                  topRight: Radius.circular(15),
+                                  bottomLeft: Radius.circular(15),
+                                  bottomRight: Radius.circular(15))),
                           child: const Text(
-                            "Customized",
+                            " Create your own customaized group",
+                            textAlign: TextAlign.center,
                             style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
+                              color: Colors.brown,
+                            ),
                           )),
                     ),
-                  ),
-                ],
+                    Center(
+                      child: Positioned(
+                        child: Container(
+                            width: 250,
+                            padding: const EdgeInsets.only(
+                                left: 80, right: 25, top: 10, bottom: 10),
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(colors: [
+                                  Colors.red.shade400,
+                                  Colors.red.shade100
+                                ]),
+                                border: Border.all(
+                                  color: Colors.red,
+                                ),
+                                boxShadow: const [
+                                  BoxShadow(
+                                    color: Colors.grey,
+                                    offset: Offset(1.0, 1.0), //(x,y)
+                                    blurRadius: 6.0,
+                                  ),
+                                ],
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(20))),
+                            child: const Text(
+                              "Customized",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            )),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

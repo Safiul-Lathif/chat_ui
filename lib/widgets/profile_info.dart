@@ -3,8 +3,7 @@ import 'package:chat_ui/miscellaneous.dart';
 import 'package:flutter/material.dart';
 
 class ProfileInfo extends StatelessWidget {
-  const ProfileInfo({super.key});
-
+  ProfileInfo({super.key});
   @override
   Widget build(BuildContext context) {
     double baseWidth = 414;
@@ -124,66 +123,6 @@ class ProfileInfo extends StatelessWidget {
             ),
             Stack(
               children: [
-                // Container(
-                //   height: MediaQuery.of(context).size.height * 0.734,
-                //   decoration: BoxDecoration(
-                //       color: Colors.blue.shade50,
-                //       image: DecorationImage(
-                //         colorFilter: ColorFilter.mode(
-                //             Colors.blue.withOpacity(0.2), BlendMode.dstATop),
-                //         image: const NetworkImage(
-                //             "https://i.pinimg.com/736x/8c/98/99/8c98994518b575bfd8c949e91d20548b.jpg"),
-                //         fit: BoxFit.fill,
-                //       ),
-                //       borderRadius: const BorderRadius.only(
-                //           topRight: Radius.circular(25),
-                //           topLeft: Radius.circular(25))),
-                //   child: Padding(
-                //     padding: const EdgeInsets.only(left: 10, top: 10),
-                //     child: Column(
-                //       children: [
-                //         ListTile(
-                //           title: Text(
-                //             "Detail 1",
-                //             style: TextStyle(
-                //                 fontWeight: FontWeight.bold,
-                //                 color: Color(0xff575757)),
-                //           ),
-                //           subtitle: Text("XXXX-XXX-XXX-XXXXX-XXX"),
-                //         ),
-                //         ListTile(
-                //           title: Text(
-                //             "Detail 2",
-                //             style: TextStyle(
-                //                 fontWeight: FontWeight.bold,
-                //                 color: Color(0xff575757)),
-                //           ),
-                //           subtitle: Text("XXXX-XXX-XXX"),
-                //         ),
-                //         ListTile(
-                //           title: Text(
-                //             "Detail 3",
-                //             style: TextStyle(
-                //                 fontWeight: FontWeight.bold,
-                //                 color: Color(0xff575757)),
-                //           ),
-                //           subtitle: Text("XXXX-XXX-XXXXXX"),
-                //         )
-                //       ],
-                //     ),
-                //   ),
-                // ),
-                // Positioned(
-                //   bottom: 550,
-                //   right: 30,
-                //   child: CircleAvatar(
-                //     backgroundColor: Colors.white,
-                //     child: Icon(
-                //       Icons.edit_calendar,
-                //       color: Colors.black,
-                //     ),
-                //   ),
-                // ),
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
@@ -234,7 +173,19 @@ class ProfileInfo extends StatelessWidget {
                                   color: Color(0xff575757)),
                             ),
                             subtitle: Text("XXXX-XXX-XXXXXX"),
-                          )
+                          ),
+                          // Padding(
+                          //   padding: const EdgeInsets.only(top: 10, bottom: 10),
+                          //   child: Container(
+                          //     width: double.maxFinite,
+                          //     decoration: BoxDecoration(
+                          //         gradient: LinearGradient(colors: [
+                          //       Colors.blueGrey,
+                          //       Colors.blueGrey,
+                          //     ])),
+                          //     height: 0.3,
+                          //   ),
+                          // ),
                         ],
                       ),
                     ),

@@ -1,11 +1,10 @@
 // ignore_for_file: must_be_immutable
-
 import 'package:chat_ui/models/chat_model.dart';
 import 'package:chat_ui/models/group_chat.dart';
 import 'package:chat_ui/miscellaneous.dart';
+import 'package:chat_ui/screens/group_info.dart';
 import 'package:chat_ui/widgets/chats_widget.dart';
 import 'package:chat_ui/widgets/message_widget.dart';
-import 'package:chat_ui/widgets/profile_info.dart';
 import 'package:draggable_bottom_sheet/draggable_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 
@@ -19,6 +18,8 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
+  var scaffoldKey = GlobalKey<ScaffoldState>();
+
   List<ChatPageModel> list = getChatList();
   // Message replyMessage;
   final focusNode = FocusNode();
@@ -165,10 +166,11 @@ class _ChatPageState extends State<ChatPage> {
     );
   }
 
-  Route _createRoute() {
+  Route _createRoute1() {
     return PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) =>
-            const ProfileInfo(),
+        pageBuilder: (context, animation, secondaryAnimation) => GroupInfo(
+              grpName: widget.teacher,
+            ),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           const begin = Offset(10.0, 0.0);
           const end = Offset.zero;
@@ -193,6 +195,142 @@ class _ChatPageState extends State<ChatPage> {
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
     return Scaffold(
+      key: scaffoldKey,
+      endDrawer: Drawer(
+        child: Container(
+          decoration: BoxDecoration(
+              color: Colors.blue.shade50,
+              image: DecorationImage(
+                colorFilter: ColorFilter.mode(
+                    Colors.blue.withOpacity(0.2), BlendMode.dstATop),
+                image: const NetworkImage(
+                    "https://i.pinimg.com/736x/8c/98/99/8c98994518b575bfd8c949e91d20548b.jpg"),
+                fit: BoxFit.fill,
+              ),
+              borderRadius: const BorderRadius.only(
+                  topRight: Radius.circular(25), topLeft: Radius.circular(25))),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 120,
+                child: DrawerHeader(
+                    decoration: BoxDecoration(
+                      color: Colors.lightGreen.shade600,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container(
+                            height: 55,
+                            width: 55,
+                            decoration: const BoxDecoration(
+                              color: Colors.transparent,
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                  image: NetworkImage(
+                                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpCKq1XnPYYDaUIlwlsvmLPZ-9-rdK28RToA&usqp=CAU")),
+                            )),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: const [
+                                Text(
+                                  "Prakash",
+                                  style: TextStyle(
+                                      color: Color(0xff575757),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  width: 2,
+                                ),
+                                Text(
+                                  "F/O Lintiest",
+                                  softWrap: true,
+                                  style: TextStyle(
+                                    color: Color(0xff575757),
+                                    fontSize: 15,
+                                  ),
+                                )
+                              ],
+                            ),
+                            const Text(
+                              "xyz@gmail.com",
+                              softWrap: true,
+                              style: TextStyle(
+                                  color: Color(0xff575757),
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w300),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                      ],
+                    )),
+              ),
+              Container(
+                padding: const EdgeInsets.only(
+                  left: 10,
+                ),
+                child: Wrap(
+                  children: [
+                    ListTile(
+                      leading: Image.network(
+                        "https://cdn-icons-png.flaticon.com/512/863/863864.png",
+                        height: 25,
+                        width: 25,
+                      ),
+                      title: const Text("Add Student"),
+                    ),
+                    ListTile(
+                      leading: Image.network(
+                        "https://cdn-icons-png.flaticon.com/512/900/900797.png",
+                        height: 25,
+                        width: 25,
+                      ),
+                      title: const Text("Configuration"),
+                    ),
+                    ListTile(
+                      leading: Image.network(
+                        "https://cdn-icons-png.flaticon.com/512/3107/3107363.png",
+                        height: 25,
+                        width: 25,
+                      ),
+                      title: const Text("Change Password"),
+                    ),
+                    ListTile(
+                      leading: Image.network(
+                        "https://cdn-icons-png.flaticon.com/512/6741/6741153.png",
+                        height: 25,
+                        width: 25,
+                      ),
+                      title: const Text("Forget Password"),
+                    ),
+                    ListTile(
+                      leading: Image.network(
+                        "https://cdn-icons-png.flaticon.com/512/182/182448.png",
+                        height: 25,
+                        width: 25,
+                      ),
+                      title: const Text("Logout"),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Container(
           width: double.infinity,
@@ -240,9 +378,10 @@ class _ChatPageState extends State<ChatPage> {
                         ),
                       ),
                     ),
+
                     Positioned(
                       // communicationp26 (7:1582)
-                      left: 70 * fem,
+                      left: 85 * fem,
                       top: 7 * fem,
                       child: Align(
                         child: SizedBox(
@@ -264,22 +403,19 @@ class _ChatPageState extends State<ChatPage> {
                     ),
                     Positioned(
                       // prakashtetslkgaCYS (7:1583)
-                      left: 70 * fem,
+                      left: 80 * fem,
                       top: 32 * fem,
                       child: Align(
-                        child: SizedBox(
-                          width: 279 * fem,
-                          height: 28 * fem,
-                          child: Text(
-                            "${widget.name.replaceAll('Class Teacher:', '')} tets (${widget.teacher})",
-                            style: SafeGoogleFont(
-                              'Inter',
-                              fontSize: 16 * ffem,
-                              fontWeight: FontWeight.w300,
-                              height: 0.9152272877 * ffem / fem,
-                              letterSpacing: 1 * fem,
-                              color: const Color(0xff575757),
-                            ),
+                        child: Text(
+                          "${widget.name.replaceAll('Class Teacher:', '')} tets (${widget.teacher})",
+                          textAlign: TextAlign.center,
+                          style: SafeGoogleFont(
+                            'Inter',
+                            fontSize: 16 * ffem,
+                            fontWeight: FontWeight.w300,
+                            height: 0.9152272877 * ffem / fem,
+                            letterSpacing: 1 * fem,
+                            color: const Color(0xff575757),
                           ),
                         ),
                       ),
@@ -302,25 +438,42 @@ class _ChatPageState extends State<ChatPage> {
                     ),
                     Positioned(
                       // userprofilesymbolWhY (7:2383)
-                      left: 344.4262695312 * fem,
-                      top: 3 * fem,
+                      left: 340.4262695312 * fem,
+                      top: 7 * fem,
                       child: Align(
-                        child: SizedBox(
-                          width: 48.28 * fem,
-                          height: 51 * fem,
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).push(_createRoute());
-                            },
-                            child: Image.asset(
-                              'assets/userprofilesymbol.png',
-                              width: 48.28 * fem,
-                              height: 51 * fem,
-                            ),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(_createRoute1());
+                          },
+                          child: Image.network(
+                            'https://cdn-icons-png.flaticon.com/512/1445/1445314.png',
+                            width: 35 * fem,
+                            height: 35 * fem,
                           ),
                         ),
                       ),
                     ),
+                    // Positioned(
+                    //   // userprofilesymbolWhY (7:2383)
+                    //   left: 344.4262695312 * fem,
+                    //   top: 3 * fem,
+                    //   child: Align(
+                    //     child: SizedBox(
+                    //       width: 48.28 * fem,
+                    //       height: 51 * fem,
+                    //       child: GestureDetector(
+                    //         onTap: () {
+                    //           Navigator.of(context).push(_createRoute1());
+                    //         },
+                    //         child: Image.network(
+                    //           'https://cdn-icons-png.flaticon.com/512/975/975660.png',
+                    //           width: 48.28 * fem,
+                    //           height: 51 * fem,
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
